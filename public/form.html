@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First-Class Mail Form</title>
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Montserrat+Subrayada|Press+Start+2P|Rye|VT323&display=swap"
+          rel="stylesheet">
+    <!--CSS modifications-->
+    <link rel="stylesheet" type="text/css" href="form.css">
+  </head>
+  
+  <body>
+      <form method="GET">
+          <label>Weight</label><br>
+          <input type="text" name="weight"><br><br> 
+          <label>Type of Mail</label><br>
+          <input type="radio" name="mailTypes" value="letters_stamped">Letters (Stamped)<br>
+          <input type="radio" name="mailTypes" value="letters_metered">Letters (Metered)<br>
+          <input type="radio" name="mailTypes" value="large_envelopes">Large Envelopes (Flats)<br>
+          <input type="radio" name="mailTypes" value="first_class">First-Class Package Service--Retail<br>
+          <input type="submit" name="submit">
+      </form>
+  </body>
+</html>
