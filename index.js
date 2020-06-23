@@ -3,21 +3,13 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 var app = express();
 
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-/*app.get('/calculator', function(req, res) {
-  res.render('pages/form', params);
-});*/
-
 app.get('/getRate', function(req, res) {
   var weight = req.query.weight;
   var mailType = req.query.mailType;
-  
   postage = calculateRate(weight, mailType);
-  
-  
   var params = {weight: weight, mailType: mailType, postage: postage};
   res.render('pages/response', params);
 });
