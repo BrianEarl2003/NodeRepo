@@ -1,0 +1,83 @@
+#WMlogo { /*Header CSS*/
+    width: auto;
+    height: 100%;
+}
+
+#slogan {
+    font-family: 'Frijole', cursive;
+    font-size: 20px;
+    color: rgb(180, 45, 45);
+    text-align: center;
+}
+
+#header1 {
+    font-family: 'Frijole', cursive;
+    font-size: 18px;
+    color: rgb(180, 45, 45);
+    text-align: left;
+}
+
+#header {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+/*Menu Bar CSS*/
+#menuBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(180, 45, 45);
+}
+
+li {
+    float: left;
+}
+
+.mb a {
+    display: block;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.mb a:hover:not(.active) {
+    background-color: gray;
+}
+
+.active {
+    background-color: plum;
+    color: black;
+}
+
+body {
+    background-color: black;
+}
+
+#clock {
+    color: rgb(180, 45, 45);
+}
+
+.card {
+    width: 30%;
+    height: 30%;
+}
+
+#showNumber {
+    position: absolute;
+    margin-left: 55px;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(190, 18, 18);
+    display: none;
+}
+
+#caption {
+    color: rgb(180, 45, 45);
+}
+
+#json {
+    color: rgb(180, 45, 45);
+}
