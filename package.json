@@ -5,9 +5,9 @@
   "engines": {
     "node": "12.x"
   },
-  "main": "index.js",
+  "main": "magicServer.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node magicServer.js",
     "test": "node test.js"
   },
   "dependencies": {
