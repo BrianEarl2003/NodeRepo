@@ -13,6 +13,7 @@ app.get('/getMagic', function(req, res) {
 app.get('/getCard', function(req, res) {
     var cardSearch = req.query.cardSearch;
     axios.get('https://api.scryfall.com/cards/named?fuzzy=' + cardSearch)
+    //axios.get('https://api.scryfall.com/cards/search?q=c%3Awhite+cmc%3D1')
     .then(response => {
         console.log(response.data.url);
         console.log(response.data.explanation);
@@ -24,6 +25,18 @@ app.get('/getCard', function(req, res) {
         console.log(error);
       });
       //res.render('pages/magic');
+});
+app.get('/searchCard', function(req, res) {
+  var cardQuery = req.query.cardQuery;
+  axios.get('https://api.scryfall.com/cards/search?q=' + cardQuery)
+  .then(response => {
+      console.log(response.data.url);
+      console.log(response.data.explanation);
+      res.status(200).json(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 });
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 

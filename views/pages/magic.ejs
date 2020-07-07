@@ -28,27 +28,31 @@
       $t=time();
       echo(date("m-d-Y g:i:s a (e)",$t));
     ?></div>
-    <form id="caption" method="GET" action="/getCard">
     <input type="button" value="Log In"><br>
-      <h2 id="header1">Search for and submit up to five cards</h2><br>
-      Card Search<input name="cardSearch" type="text"><input type="submit" onclick="grab_card()" value="Search"><br>
-      <div id="json"></div>
-      <div id="picture">
-        <!--<img class="card" src="https://img.scryfall.com/cards/large/front/3/2/32776159-3fb6-4a70-be84-837ccd1d54a7.jpg?1562201265">
-        <img class="card" src="https://img.scryfall.com/cards/large/front/c/8/c83ed3e0-82d0-4410-a6ca-b0f923eadf83.jpg?1581479572">
-        <img class="card" src="https://img.scryfall.com/cards/large/front/8/2/82389aaa-9f32-4169-a71c-1aea5af9e935.jpg?1563899813">
-        <img class="card" src="https://img.scryfall.com/cards/large/front/8/a/8a81e889-490b-4aeb-8e84-ea9a390bb8fe.jpg?1584830817">
-        <img class="card" src="https://img.scryfall.com/cards/large/front/8/a/8a81e889-490b-4aeb-8e84-ea9a390bb8fe.jpg?1563899413">-->
-      </div>
-      Card 1<input type="text"><br>
-      Card 2<input type="text"><br>
-      Card 3<input type="text"><br>
-      Card 4<input type="text"><br>
-      Card 5<input type="text"><br>
+    <h2 id="header1">Search for a card by name, a card list by query and submit up to five cards</h2>
+    <p class="red">Scryfall includes a large set of keywords and expressions you can use to filter Magic cards.</p>
+    <a class="red" href="https://scryfall.com/docs/syntax">Scryfall Search Reference</a><br><br>
+    <form id="searchQueryForm" method="GET" action="/searchCard">
+      <input name="cardQuery" id="cardQuery" type="text" placeholder="Search by Query for a List of Cards"><br>
+      <input type="submit" onclick="grab_list()" value="Search by List/Next Page"><br>
+      Group #<input id="groupNum" value="1"><br>
+      Page #<input id="pageNum" value="0"><br>
+      <div id="cardList"></div>
+    </form>
+    <form id="cardSearchFrom" method="GET" action="/getCard">
+      <input id="cardSearch" name="cardSearch" type="text" placeholder="Search Card by Name"><br>
+      <input type="submit" onclick="grab_card()" value="Search Card by Name"><br>
+      <div id="picture2"></div>
+      Card #<input id="cardId" value="1"><br>
+      Card 1<input id="card1" type="text"><br>
+      Card 2<input id="card2" type="text"><br>
+      Card 3<input id="card3" type="text"><br>
+      Card 4<input id="card4" type="text"><br>
+      Card 5<input id="card5" type="text"><br>
       <textarea placeholder="Explanation"></textarea><br>
       <input type="button" value="Submit Combo">
     </form>
-    
+    <div id="json"></div>
     <h1 id="header1">Combos Page</h1>
     
     <div id="combo1">

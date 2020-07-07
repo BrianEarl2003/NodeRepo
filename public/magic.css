@@ -61,8 +61,8 @@ body {
 }
 
 .card {
-    width: 30%;
-    height: 30%;
+    width: 20%;
+    height: 20%;
 }
 
 #showNumber {
@@ -74,10 +74,22 @@ body {
     display: none;
 }
 
-#caption {
+form {
     color: rgb(180, 45, 45);
 }
 
 #json {
     color: rgb(180, 45, 45);
+}
+
+#caption {
+    color: rgb(180, 45, 45);
+}
+
+.red {
+    color: rgb(180, 45, 45);
+}
+
+input {
+    width: 40%
 }

@@ -13,7 +13,8 @@
   "dependencies": {
     "axios": "^0.19.2",
     "ejs": "^2.7.4",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "pg": "^8.2.1"
   },
   "devDependencies": {
     "got": "^11.3.0",
