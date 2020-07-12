@@ -1,9 +1,15 @@
-const express = require('express')
-const path = require('path')
+const express = require('express');
+const path = require('path');
+const {Pool} = require('pg');
 const axios = require('axios');
-const PORT = process.env.PORT || 8888
-var app = express();
 
+const CombosController = require('./public/javascript/magicDb.js');
+const PORT = process.env.PORT || 8888;
+const connectionString = process.env.DATABASE_URL || 'postgres://puzwgqmubratkb:ec448406403a5f0f3149cbbd7ecc69fc642b6abb465098324ee82c1e086f9081@ec2-54-236-169-55.compute-1.amazonaws.com:5432/daot60aij3ip2a?ssl=true';
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+//const pool = new Pool({connectionString: connectionString});
+
+var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -38,5 +44,9 @@ app.get('/searchCard', function(req, res) {
       console.log(error);
     });
 });
+app.get('/getCombos', CombosController.getCombos);
+app.get('/submitUsername', CombosController.submitUsername);
+app.get('/submitCombo', CombosController.submitCombo);
+app.get('/submitCards', CombosController.submitCards);
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 

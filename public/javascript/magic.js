@@ -121,32 +121,6 @@ function fillName(name) {
   //});
 }
 
-/*function addImgUrl2() {
-  event.preventDefault();
-  var data2 = $('form').serialize();
-  $.ajax({
-    url: '/searchCard',
-    type: 'GET',
-    data: data2,
-    dataType: 'json', //will parse json into javascript object
-    //callback called when succeed
-    success: (data) => {
-      var i = 0;
-      var max = 0;
-      var i = parseInt($('#cardId').val());
-      var max = (i + 1);
-      //var i = 1;
-      for (i; i < max; i++) {
-        $('#card'+i).val(data.data[i].image_uris.png);
-      }
-      if (i == 6) {
-        i = 1;
-      }
-      $('#cardId').val(i);
-    }
-  });
-}*/
-
 $(function() {
   $('#hoverhide').hover(function() { 
       $('#showNumber').fadeOut("slow");
@@ -156,3 +130,70 @@ $(function() {
       $('#hoverhide').fadeIn("slow"); 
   });
 });
+
+function showCombos() {
+  event.preventDefault();
+  data={};
+  data["id"] = 1;
+  $.ajax({
+    url: '/getCombos',
+    type: 'GET',
+    data: data,
+    dataType: 'json', //will parse json into javascript object
+    //callback called when succeed
+    success: (data) => {
+      console.log(data);
+      newhtml1 = "";
+      for (var i = 0; i < data.length; i++) {
+        newhtml1 += "<img class='card' src=" + JSON.stringify(data[i].image_uris) + ">";
+        if ((i+1) % 3 == 0) {
+          newhtml1 += "<br><p class='caption'>" + data[i].content + "<br>-submitted by " + data[i].user_name + "</p><br>";
+        }
+      }
+      $('#combos').html(newhtml1);
+    }
+  });
+}
+
+function submitUsernameForm() {
+  event.preventDefault();
+  data={};
+  //data["id"] = ("SELECT COUNT(*) FROM username;") + 1;
+  data["user_name"] = $('#username').val();
+  $.ajax({
+    url: '/submitUsername',
+    type: 'GET',
+    data: data,
+    dataType: 'json', //will parse json into javascript object
+  });
+}
+
+function submitComboForm() {
+  event.preventDefault();
+  data={};
+  //data["id"] = ("SELECT COUNT(*) FROM combo;") + 1;
+  //data["user_name_id"] = ("SELECT COUNT(*) FROM username;") + 1;
+  data["content"] = $('#explanation').val();
+  $.ajax({
+    url: '/submitCombo',
+    type: 'GET',
+    data: data,
+    dataType: 'json', //will parse json into javascript object
+  });
+}
+
+function submitCardsForm() {
+  event.preventDefault();
+  data={};
+  //data["id"] = ("SELECT COUNT(*) FROM magiccard;") + 1;
+  //data["combo_id"] = ("SELECT COUNT(*) FROM combo;") + 1;
+  data["image_uris1"] = $('#card1').val();
+  data["image_uris2"] = $('#card2').val();
+  data["image_uris3"] = $('#card3').val();
+  $.ajax({
+    url: '/submitCards',
+    type: 'GET',
+    data: data,
+    dataType: 'json', //will parse json into javascript object
+  });
+}
