@@ -44,7 +44,7 @@
       <input type="submit" onclick="grab_card()" value="Search Card by Name"><br>
       <div id="picture2"></div>
     </form>
-    <form id="submitComboForm" method="GET" action="/submitUsername">
+    <form id="submitComboForm" onsubmit="submitUsernameForm()" method="GET" action="/submitUsername">
       Card #<input id="cardId" value="1"><br>
       Card 1<input id="card1" type="text"><br>
       Card 2<input id="card2" type="text"><br>

@@ -165,7 +165,12 @@ function submitUsernameForm() {
     type: 'GET',
     data: data,
     dataType: 'json', //will parse json into javascript object
+    success: (data) => {
+      console.log('ajax success!', data);
+      submitComboForm();
+    }
   });
+  return false;
 }
 
 function submitComboForm() {
@@ -179,6 +184,10 @@ function submitComboForm() {
     type: 'GET',
     data: data,
     dataType: 'json', //will parse json into javascript object
+    success: (data) => {
+      console.log('ajax success!', data);
+      submitCardsForm();
+    }
   });
 }
 
@@ -187,6 +196,7 @@ function submitCardsForm() {
   data={};
   //data["id"] = ("SELECT COUNT(*) FROM magiccard;") + 1;
   //data["combo_id"] = ("SELECT COUNT(*) FROM combo;") + 1;
+  data["user_name"] = $('#username').val();
   data["image_uris1"] = $('#card1').val();
   data["image_uris2"] = $('#card2').val();
   data["image_uris3"] = $('#card3').val();
@@ -195,5 +205,8 @@ function submitCardsForm() {
     type: 'GET',
     data: data,
     dataType: 'json', //will parse json into javascript object
+    success: (data) => {
+      console.log('ajax success!', data);
+    }
   });
 }
