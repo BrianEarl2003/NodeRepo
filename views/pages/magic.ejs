@@ -8,26 +8,29 @@
     <!--CSS modifications-->
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
     <link rel="stylesheet" type="text/css" href="magic.css">
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
 
   <body onload="showCombos()">
     <header>
       <div id="header">
-        <img id="WMlogo" src="https://i.pinimg.com/originals/68/df/3d/68df3d7f7fe51cb099b3874a53599191.png">
-        <h1 id="slogan">MTG COMBO CHAOS</h1>
-        <img id="WMlogo" src="https://logodix.com/logo/2086275.png" alt="WM Logo">
+        <div class="jumbotron jumbotron-fluid">
+          <!--img id="WMlogo" class="display-4" src="https://i.pinimg.com/originals/68/df/3d/68df3d7f7fe51cb099b3874a53599191.png"-->
+
+          <div class="container" >
+
+            <h1 id="slogan" class="display-4">COMBO CHAOS</h1>
+            <img class="mx-auto d-block text-center img-fluid" id="WMlogo" src="https://logodix.com/logo/2086275.png" alt="WM Logo">
+          
+          </div>
+        </div>
       </div>
       <ul id="menuBar">
         <li class="mb"><a href="">Home</a></li>
         <li class="mb"><a href="">Index</a></li>
       </ul> <!-- end menuBar -->
     </header>
-    <div id="clock"><?php
-      $t=time();
-      echo(date("m-d-Y g:i:s a (e)",$t));
-    ?></div>
     <input type="button" value="Log In"><br>
     <h2 id="header1">Search for a card by name, a card list by query and submit up to five cards</h2>
     <p class="red">Scryfall includes a large set of keywords and expressions you can use to filter Magic cards.</p>
@@ -45,12 +48,13 @@
       <div id="picture2"></div>
     </form>
     <form id="submitComboForm" onsubmit="submitUsernameForm()" method="GET" action="/submitUsername">
-      Card #<input id="cardId" value="1"><br>
-      Card 1<input id="card1" type="text"><br>
-      Card 2<input id="card2" type="text"><br>
-      Card 3<input id="card3" type="text"><br>
-      Card 4<input id="card4" type="text"><br>
-      Card 5<input id="card5" type="text"><br>
+      Change Card Slot<input id="cardId" value="1">Click Card to Remove<br>
+      <div class="cardImg" id="img1">Card 1</div><div class="cardImg" id="img2">Card 2</div><div class="cardImg" id="img3">Card 3</div><div class="cardImg" id="img4">Card 4</div><div class="cardImg" id="img5">Card 5</div>
+      <div class="hidden">Card 1<input class="hidden" id="card1" type="text"><br>
+      Card 2<input class="hidden" id="card2" type="text"><br>
+      Card 3<input class="hidden" id="card3" type="text"><br>
+      Card 4<input class="hidden" id="card4" type="text"><br>
+      Card 5<input class="hidden" id="card5" type="text"><br></div>
       <textarea id="explanation" placeholder="Explanation"></textarea><br>
       <input id="username" type="text" placeholder="Username"><br>
       <input type="submit" value="Submit Combo">
