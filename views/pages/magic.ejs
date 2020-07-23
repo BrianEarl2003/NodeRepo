@@ -6,84 +6,64 @@
     <!--for google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Frijole|Comfortaa|Creepster|Satisfy&display=swap" rel="stylesheet">
     <!--CSS modifications-->
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
     <link rel="stylesheet" type="text/css" href="magic.css">
-    <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
 
   <body onload="showCombos()">
     <header>
-      <div id="header">
-        <div class="jumbotron jumbotron-fluid">
-          <!--img id="WMlogo" class="display-4" src="https://i.pinimg.com/originals/68/df/3d/68df3d7f7fe51cb099b3874a53599191.png"-->
-
-          <div class="container" >
-
-            <h1 id="slogan" class="display-4">COMBO CHAOS</h1>
-            <img class="mx-auto d-block text-center img-fluid" id="WMlogo" src="https://logodix.com/logo/2086275.png" alt="WM Logo">
-          
-          </div>
-        </div>
-      </div>
+      <h1 id="slogan">COMBO CHAOS</h1>
+      <img class="mx-auto d-block text-center img-fluid" id="WMlogo" src="https://logodix.com/logo/2086275.png" alt="WM Logo">   
       <ul id="menuBar">
-        <li class="mb"><a href="">Home</a></li>
-        <li class="mb"><a href="">Index</a></li>
+        <li class="mb"><a href="https://scryfall.com/docs/syntax">Scryfall Search Reference</a></li>
       </ul> <!-- end menuBar -->
-    </header>
-    <input type="button" value="Log In"><br>
-    <h2 id="header1">Search for a card by name, a card list by query and submit up to five cards</h2>
-    <p class="red">Scryfall includes a large set of keywords and expressions you can use to filter Magic cards.</p>
-    <a class="red" href="https://scryfall.com/docs/syntax">Scryfall Search Reference</a><br><br>
-    <form id="searchQueryForm" method="POST" action="/searchCard">
-      <input name="cardQuery" id="cardQuery" type="text" placeholder="Search by Query for a List of Cards"><br>
-      <input type="submit" onclick="grab_list()" value="Search by List/Next Page"><br>
-      Group #<input id="groupNum" value="1"><br>
-      Page #<input id="pageNum" value="0"><br>
-      <div id="cardList"></div>
-    </form>
-    <form id="cardSearchForm" method="GET" action="/getCard">
-      <input id="cardSearch" name="cardSearch" type="text" placeholder="Search Card by Name"><br>
-      <input type="submit" onclick="grab_card()" value="Search Card by Name">Click a Searched Card to Add it to the Combo<br>
-      <div id="picture2"></div>
-    </form>
-    <form id="submitComboForm" onsubmit="submitUsernameForm()" method="GET" action="/submitUsername">
-      Change Card Slot<input id="cardId" value="1">Click Card to Remove from Slot<br>
-      <div class="cardImg" id="img1">Card 1</div><div class="cardImg" id="img2">Card 2</div><div class="cardImg" id="img3">Card 3</div><div class="cardImg" id="img4">Card 4</div><div class="cardImg" id="img5">Card 5</div>
-      <div class="hidden">Card 1<input class="hidden" id="card1" type="text"><br>
-      Card 2<input class="hidden" id="card2" type="text"><br>
-      Card 3<input class="hidden" id="card3" type="text"><br>
-      Card 4<input class="hidden" id="card4" type="text"><br>
-      Card 5<input class="hidden" id="card5" type="text"><br></div>
-      <textarea id="explanation" placeholder="Explanation"></textarea><br>
-      <input id="username" type="text" placeholder="Username"><br>
+    </header><br><!-- end header -->
+
+    <div class="redBorder"><!-- search list form -->
+      <h2 class="header1">Search for a list of cards by query</h2>
+      <p class="red">Scryfall includes a large set of keywords and expressions you can use to filter Magic cards.</p><br>
+      <form id="searchQueryForm" method="POST" action="/searchCard">
+        <input class="input" name="cardQuery" id="cardQuery" type="text" placeholder="Search by Query for a List of Cards"><br>
+        <input type="submit" onclick="grab_list()" value="Search by List/Next Page"><br>
+        Group #<input class="smInput" id="groupNum" value="1"><br>
+        Page #<input class="smInput" id="pageNum" value="0"><br>
+        <div id="cardList"></div>
+      </form>
+    </div><br><!--end search list form -->
+
+    <!-- search card form -->
+    <form class="redBorder" id="cardSearchForm" method="GET" action="/getCard">
+      <h2 class="header1">Search for a card by name</h2>
+      <input id="cardSearch" name="cardSearch" class="input" type="text" placeholder="Search Card by Name"><br>
+      <input type="submit" onclick="grab_card()" value="Search Card by Name"><br>
+      <div id="picture2"></div>Click a Searched Card to Add it to the Combo
+    </form><br><!-- end search card form -->
+
+    <!-- submit combo form -->
+    <form class="redBorder" id="submitComboForm" onsubmit="submitUsernameForm()" method="GET" action="/submitUsername">
+      <h2 class="header1">Submit up to five cards in the Combo</h2>
+      Change Card Slot<input class="smInput" id="cardId" value="1"><br>
+      <div class="redBorder">
+        <div class="cardImg" id="img1">Card 1</div><div class="cardImg" id="img2">Card 2</div><div class="cardImg" id="img3">Card 3</div><div class="cardImg" id="img4">Card 4</div><div class="cardImg" id="img5">Card 5</div>
+        <br>Click Card to Remove from Slot
+      </div>
+      <input type="hidden" id="card1" type="text">
+      <input type="hidden" id="card2" type="text">
+      <input type="hidden" id="card3" type="text">
+      <input type="hidden" id="card4" type="text">
+      <input type="hidden" id="card5" type="text">
+      <textarea class="input" id="explanation" placeholder="Explanation"></textarea><br>
+      <input class="input" id="username" type="text" placeholder="Username"><br>
       <input type="submit" value="Submit Combo">
-    </form>
-    <div id="json"></div>
-    <h1 id="header1">Combos Page</h1>
+    </form><br><!-- end submit combo form -->
 
-    <div id="combos"></div>
+    <div class="redBorder"><!-- combos page -->
+      <h1 class="header1">Combos Page</h1>
+      <div id="combos"></div>
+    </div><!-- end combos page -->
 
-    <!--<div id="combo1">
-      <div id="showNumber"><h2>+3</h2></div>  
-    </div>
-    <div id="caption1" class="caption"></div>
-    <div id="combo2">
-      <img class="card" src="https://img.scryfall.com/cards/large/front/8/2/82389aaa-9f32-4169-a71c-1aea5af9e935.jpg?1563899712">
-      <img class="card" src="https://www.cardkingdom.com/images/magic-the-gathering/theros-beyond-death/nyxbloom-ancient-36268-medium.jpg">
-      <img class="card" src="https://media-dominaria.cursecdn.com/avatars/thumbnails/272/82/200/283/636822159446241767.jpeg">
-    </div>
-    <div id="caption2" class="caption">Play Risen Reef to put lands in play and cards in your hand when you play an Elemental, then drop a Nyxbloom Ancient to produce three times more mana, then use Electrodominance to finish off your opponent.<br>-submitted by FuriousAvatar</div>-->
-    <!--<div id="combo3">
-      <img class="card" src="https://img.scryfall.com/cards/large/front/8/a/8a81e889-490b-4aeb-8e84-ea9a390bb8fe.jpg?1584830817">
-      <img class="card" src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=473109&type=card">
-      <img class="card" src="https://img.scryfall.com/cards/large/front/d/c/dccbe031-1547-4fa5-ba9a-caa1b1f5eb5d.jpg?1563899311">
-    </div>
-    <div id="caption3" class="caption">Cavalcade of Calamity deals an extra damage when a creature with 1 power attacks, Torban's ability increases this damage by two and if three 1/1 creatures attack, it could cause up to 18 damage.<br>-submitted by FuriousAvatar</div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>-->
     <script src="javascript/magic.js"></script>
+
   </body>
 </html>
   

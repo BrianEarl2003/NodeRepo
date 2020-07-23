@@ -4,8 +4,7 @@ DROP TABLE IF EXISTS username;
 
 CREATE TABLE username(
     id SERIAL PRIMARY KEY,
-    user_name VARCHAR(256) NOT NULL UNIQUE--,
-    --pass_word VARCHAR(256) NOT NULL
+    user_name VARCHAR(256) NOT NULL UNIQUE
     );
 
 CREATE TABLE combo(
@@ -21,7 +20,6 @@ CREATE TABLE magiccard(
     image_uris TEXT NOT NULL
     );
 
---INSERT INTO username (id, user_name, pass_word) VALUES (1, 'FuriousAvatar', '1234password');
 INSERT INTO username (user_name) VALUES ('FuriousAvatar');
 
 Insert INTO combo (user_name_id, numCards, content) VALUES (1, 3, 'Use Thassa''s abiltiy to exile Cavalier of Gales, bring it back, and add 3 counters to Ominous Seas.');
@@ -81,9 +79,6 @@ Insert INTO magiccard (combo_id, image_uris) VALUES (11, 'https://img.scryfall.c
 Insert INTO combo (user_name_id, numCards, content) VALUES (2, 3, 'Turn two play the infiltrator. Turn three play spellbinder imprinting savage beating onto it. Turn four equip spellbinder onto the infiltrator and attack. The unlocked damage triggers spellbinder''s ability casting savage beating choose the extra attack step unwrapping your creature and then attack again. Repeat until your opponent is disposed of.');
 
 Insert INTO magiccard (combo_id, image_uris) VALUES (12, 'https://img.scryfall.com/cards/png/front/1/7/1761d867-2eb0-406b-b175-97a90c457844.png?1562701439'), (12, 'https://img.scryfall.com/cards/png/front/4/d/4d193d4f-1beb-4938-b3fb-b2e96d0c9ec4.png?1562636758'), (12, 'https://img.scryfall.com/cards/png/front/c/3/c3739d37-7865-46bf-abbc-7a5678709508.png?1562639405');
-
-
-
 
 Insert INTO combo (user_name_id,  numCards, content) VALUES (2, 2, 'Have vito out. Then play revenge. if you have been gaining life most of the game you would easily have around 20 life and your opponent should be less than 40. Revenge will make you gain around 20 life and your opponents life cut in half before they lose around twenty from vito.');
 

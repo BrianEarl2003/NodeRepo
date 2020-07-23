@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 const connectionString = process.env.DATABASE_URL || 'postgres://puzwgqmubratkb:ec448406403a5f0f3149cbbd7ecc69fc642b6abb465098324ee82c1e086f9081@ec2-54-236-169-55.compute-1.amazonaws.com:5432/daot60aij3ip2a?ssl=true';
 const pool = new Pool({ connectionString: connectionString });
-
+// requests the input, calls the callback function and checks for errors
 function getCombos(request, response) {
   console.log("running");
   const id = request.query.id;
@@ -12,12 +12,12 @@ function getCombos(request, response) {
     } else {
       const combos = result;
       console.log(combos);
-      params = result; //chance to remove [0]
+      params = result;
       response.status(200).json(combos);
     }
   });
-} //END get_combos
-
+}
+//sends a query to the database and checks for errors
 function getCombosQuery(id, callback) {
   console.log("Getting all combos from DB");
   const sql = "SELECT * FROM combo c JOIN magicCard m ON c.id=m.combo_id JOIN username u ON u.id=c.user_name_id WHERE u.id=$1::int;";
@@ -31,7 +31,7 @@ function getCombosQuery(id, callback) {
     callback(null, result.rows);
   });
 }
-
+// requests the input, calls the callback function and checks for errors
 function submitUsername(request, response) {
   console.log("running submitUsername");
   const user_name = request.query.user_name;
@@ -42,12 +42,13 @@ function submitUsername(request, response) {
     } else {
       const combos = result;
       console.log(combos);
-      params = result; //chance to remove [0]
+      params = result;
       response.status(200).json(combos);
+      console.log("submitted username");
     }
   });
-} //END get_combos
-
+} 
+//sends a query to the database and checks for errors
 function submitUsernameQuery(user_name, callback) {
   console.log("submitting username to DB " + user_name);
   const sql1 = `SELECT user_name FROM username WHERE user_name = '${user_name}'`;
@@ -68,7 +69,7 @@ function submitUsernameQuery(user_name, callback) {
     }
   });
 }
-
+// requests the input, calls the callback function and checks for errors
 function submitCombo(request, response) {
   console.log("running submitCombo");
   const numCards = request.query.numCards;
@@ -82,16 +83,16 @@ function submitCombo(request, response) {
     } else {
       const combos = result;
       console.log(combos);
-      params = result; //chance to remove [0]
+      params = result;
       response.status(200).json(combos);
+      console.log("submitted combo");
     }
   });
-} //END get_combos
-
+}
+//sends a query to the database and checks for errors
 function submitComboQuery(user_name, numCards, content, callback) {
   console.log("Submitting combo to DB" + user_name);
   const sql = "Insert INTO combo (user_name_id, numCards, content) VALUES ((SELECT id FROM username WHERE user_name = $1::text), $2::int, $3::text);";
-  //const sql = "Insert INTO combo (user_name_id, content) VALUES ($1::int, $2::text);";
   params = [user_name, numCards, content];
   pool.query(sql, params, function (err, result) {
     if (err) {
@@ -102,7 +103,7 @@ function submitComboQuery(user_name, numCards, content, callback) {
     callback(null, result);
   });
 }
-
+// requests the input, calls the callback function and checks for errors
 function submitCards(request, response) {
   console.log("running submitCards");
   const numCards = request.query.numCards;
@@ -119,29 +120,17 @@ function submitCards(request, response) {
     } else {
       const combos = result;
       console.log(combos);
-      params = result; //chance to remove [0]
+      params = result;
       response.status(200).json(combos);
+      console.log("submitted cards");
     }
   });
-} //END get_combos
-
+}
+//sends a query to the database and checks for errors
 function submitCardsQuery(numCards, user_name, image_uris1, image_uris2, image_uris3, image_uris4, image_uris5, callback) {
   console.log("submitting all cards to DB " + user_name);
   console.log(numCards);
-  //image_uris = {image_uris1, image_uris2, image_uris3, image_uris4, image_uris5};
   var sql = "";
-  /*sql += "Insert INTO magiccard (combo_id, image_uris) VALUES ";
-  for (var i = 2; i < numCards + 2; i++) {
-    //sql += `(SELECT c.id FROM combo c JOIN username u ON c.user_name_id=u.id WHERE user_name = $1::text order by c.id desc limit 1), $2::text), ((SELECT c.id FROM combo c JOIN username u ON c.user_name_id=u.id WHERE user_name = $1::text order by c.id desc limit 1), $3::text), ((SELECT c.id FROM combo c JOIN username u ON c.user_name_id=u.id WHERE user_name = $1::text order by c.id desc limit 1), $4::text);`;
-    sql += `((SELECT c.id FROM combo c JOIN username u ON c.user_name_id=u.id WHERE user_name = $1::text order by c.id desc limit 1), '${image_uris[i]}')`;
-    if (i < numCards + 1) {
-      sql += ",";
-    }
-    if (i == numCards + 1) {
-      sql += ";";
-    }
-  }
-  params = [user_name];*/
   if (numCards == 1) {
     sql = "Insert INTO magiccard (combo_id, image_uris) VALUES ((SELECT c.id FROM combo c JOIN username u ON c.user_name_id=u.id WHERE user_name = $1::text order by c.id desc limit 1), $2::text);"
     params = [user_name, image_uris1];
@@ -171,7 +160,7 @@ function submitCardsQuery(numCards, user_name, image_uris1, image_uris2, image_u
     callback(null, result);
   });
 }
-
+//allows the server to call these functions
 module.exports = {
   getCombos: getCombos,
   getCombosQuery: getCombosQuery,
