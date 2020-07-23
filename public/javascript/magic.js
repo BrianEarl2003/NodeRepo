@@ -31,6 +31,7 @@ function grab_card() {
 }
 //adds the card to combo queue as an image button
 function addImgUrl(url) {
+  event.preventDefault();
   var i = 0;
   var max = 0;
   var i = parseInt($('#cardId').val());
