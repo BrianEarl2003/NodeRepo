@@ -44,11 +44,11 @@
     </form>
     <form id="cardSearchForm" method="GET" action="/getCard">
       <input id="cardSearch" name="cardSearch" type="text" placeholder="Search Card by Name"><br>
-      <input type="submit" onclick="grab_card()" value="Search Card by Name"><br>
+      <input type="submit" onclick="grab_card()" value="Search Card by Name">Click a Searched Card to Add it to the Combo<br>
       <div id="picture2"></div>
     </form>
     <form id="submitComboForm" onsubmit="submitUsernameForm()" method="GET" action="/submitUsername">
-      Change Card Slot<input id="cardId" value="1">Click Card to Remove<br>
+      Change Card Slot<input id="cardId" value="1">Click Card to Remove from Slot<br>
       <div class="cardImg" id="img1">Card 1</div><div class="cardImg" id="img2">Card 2</div><div class="cardImg" id="img3">Card 3</div><div class="cardImg" id="img4">Card 4</div><div class="cardImg" id="img5">Card 5</div>
       <div class="hidden">Card 1<input class="hidden" id="card1" type="text"><br>
       Card 2<input class="hidden" id="card2" type="text"><br>
