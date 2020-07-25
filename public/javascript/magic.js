@@ -152,11 +152,11 @@ async function submitUsernameForm() {
     data: data,
     dataType: 'json', //will parse json into javascript object
     success: (data) => {
-      console.log('ajax success!', data);
+      console.log('ajax success!', data); 
     }
   });
   submitComboForm();
-  return false;
+  //return false;
 }
 //links the input from the user to the database functions and calls submitCardsForm()
 async function submitComboForm() {

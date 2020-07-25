@@ -55,6 +55,12 @@ function submitUsernameQuery(user_name, callback) {
   pool.query(sql1, function (err, result) {
     console.log(result);
     if (result.rowCount > 0) {
+      if (err) {
+        console.log("Error in query: " + err);
+        callback(err, null);
+      }
+      console.log("Found result: " + JSON.stringify(result));
+      callback(null, result);
     } else {
       const sql2 = "Insert INTO username (user_name) VALUES ($1::text);";
       params = [user_name];
